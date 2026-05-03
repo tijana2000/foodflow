@@ -1,0 +1,66 @@
+POST http://localhost:8081/restaurants
+Content-Type: application/json
+
+{
+  "name": "Sushi Place",
+  "address": "Novi Sad",
+  "cuisineType": "Japanese",
+  "rating": 4.8,
+  "active": true
+}
+###
+POST http://localhost:8081/restaurants
+Content-Type: application/json
+
+{
+  "name": "China House",
+  "address": "Novi Sad",
+  "cuisineType": "Japanese",
+  "rating": 4.8,
+  "active": true
+}
+
+
+
+###
+
+POST http://localhost:8081/restaurants/1/menu
+Content-Type: application/json
+
+{
+  "name": "California Roll",
+  "price": 950,
+  "description": "Sushi roll with crab and avocado",
+  "available": true
+}
+
+###
+
+DELETE http://localhost:8081/restaurants/menu/5
+###
+
+PUT http://localhost:8081/restaurants/menu/4
+Content-Type: application/json
+
+{
+  "name": "Chicken Burger XXL",
+  "price": 900,
+  "description": "Big burger",
+  "available": true
+}
+###
+GET http://localhost:8081/restaurants/menu
+
+###
+
+GET http://localhost:8081/restaurants/search?cuisineType=Japanese
+###
+###
+
+GET http://localhost:8081/restaurants/search/name?name=Sushi
+
+###
+
+GET http://localhost:8081/restaurants/search/filter?cuisineType=Japanese&minRating=4.5
+###
+GET http://localhost:8080/api/restaurants

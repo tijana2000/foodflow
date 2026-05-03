@@ -1,0 +1,15 @@
+GET http://localhost:8080/api/restaurants
+
+###
+
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "hasheduser@test.com",
+  "password":"test123"
+}
+###
+GET http://localhost:8080/api/restaurants
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3ODQ2MDk2LCJleHAiOjE3Nzc4NDk2OTZ9.r0vh3Yb04l8PrpAmMnKrINDO8vZopSizOpVUpSglS0k
+

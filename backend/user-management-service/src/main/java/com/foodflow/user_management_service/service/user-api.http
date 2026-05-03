@@ -1,0 +1,63 @@
+POST http://localhost:8082/users/register
+Content-Type: application/json
+
+{
+"fullName": "Tijana Vujinovic",
+"email": "tijana@test.com",
+"password": "test123",
+"role": "CUSTOMER"
+}
+###
+POST http://localhost:8082/users/register
+Content-Type: application/json
+
+{
+  "fullName": "John Miller",
+  "email": "johnmiller@test.com",
+  "password": "miller123",
+  "role": "COURIER"
+}
+###
+POST http://localhost:8082/users/register
+Content-Type: application/json
+
+{
+  "fullName": "Test User Hash",
+  "email": "hasheduser@test.com",
+  "password": "test123",
+  "role": "CUSTOMER"
+}
+###
+POST http://localhost:8082/users/login
+Content-Type: application/json
+
+{
+  "email": "hasheduser@test.com",
+  "password": "test123"
+}
+###
+POST http://localhost:8082/users/login
+Content-Type: application/json
+
+{
+  "email": "johnmiller@test.com",
+  "password": "miller123"
+}
+###
+GET http://localhost:8082/users/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3ODQwMDM5LCJleHAiOjE3Nzc4NDM2Mzl9.2EzeZ1N4hzUBnAg7p47wP8NHXcJhM6tmNfS0ttAYHGA
+###
+GET http://localhost:8082/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2hubWlsbGVyQHRlc3QuY29tIiwiaWF0IjoxNzc3ODQxNzQ4LCJleHAiOjE3Nzc4NDUzNDh9.DH2FvBpTqcSMfaLRC_iL5a2FNDKWzFuj_7VjBfoFZFQ
+###
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+"email": "hasheduser@test.com",
+"password": "test123"
+}
+
+
+
+
