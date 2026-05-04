@@ -1,5 +1,7 @@
 package com.foodflow.order_service.service;
 
+import com.foodflow.order_service.client.MenuItemResponse;
+import com.foodflow.order_service.client.RestaurantClient;
 import com.foodflow.order_service.dto.CreateOrderRequest;
 import com.foodflow.order_service.dto.OrderDTO;
 import com.foodflow.order_service.dto.OrderItemRequest;
@@ -17,9 +19,11 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final RestaurantClient restaurantClient;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, RestaurantClient restaurantClient) {
         this.orderRepository = orderRepository;
+        this.restaurantClient = restaurantClient;
     }
 
     public OrderDTO createOrder(Long customerId, CreateOrderRequest request) {
@@ -45,13 +49,16 @@ public class OrderService {
     }
 
     private OrderItem mapToOrderItem(OrderItemRequest request, Order order) {
+        MenuItemResponse menuItem = restaurantClient.getMenuItemById(request.getMenuItemId());
+
 
         OrderItem item = new OrderItem();
         item.setMenuItemId(request.getMenuItemId());
-        item.setMenuItemName(request.getMenuItemName());
+        item.setMenuItemName(menuItem.getName());
         item.setQuantity(request.getQuantity());
-        item.setPrice(request.getPrice());
+        item.setPrice(menuItem.getPrice());
         item.setOrder(order);
+
         return item;
     }
 

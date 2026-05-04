@@ -64,3 +64,5 @@ GET http://localhost:8081/restaurants/search/name?name=Sushi
 GET http://localhost:8081/restaurants/search/filter?cuisineType=Japanese&minRating=4.5
 ###
 GET http://localhost:8080/api/restaurants
+###
+GET http://localhost:8081/restaurants/menu-items/3
