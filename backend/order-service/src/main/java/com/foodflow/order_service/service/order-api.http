@@ -1,0 +1,36 @@
+POST http://localhost:8083/api/orders?customerId=1
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "items": [
+    {
+      "menuItemId": 3,
+      "menuItemName": "Pizza Margerita",
+      "quantity": 2,
+      "price": 850
+    }
+  ]
+}
+###
+POST http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI1MTI4LCJleHAiOjE3Nzc5Mjg3Mjh9.t0MPXBCUzQY8nVK1HrveEC8rSnGJXEWwFyHay9pUbRw
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "items": [
+    {
+      "menuItemId": 3,
+      "menuItemName": "Pizza Margerita",
+      "quantity": 2,
+      "price": 850
+    }
+  ]
+}
+###
+GET http://localhost:8080/api/orders/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI1MTI4LCJleHAiOjE3Nzc5Mjg3Mjh9.t0MPXBCUzQY8nVK1HrveEC8rSnGJXEWwFyHay9pUbRw
+###
+GET http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI1MTI4LCJleHAiOjE3Nzc5Mjg3Mjh9.t0MPXBCUzQY8nVK1HrveEC8rSnGJXEWwFyHay9pUbRw
