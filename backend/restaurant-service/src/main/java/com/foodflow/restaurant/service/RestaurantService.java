@@ -110,4 +110,9 @@ public class RestaurantService {
                 .map(RestaurantMapper::toRestaurantDTO)
                 .toList();
     }
+    public MenuItemDTO getMenuItemById(Long id){
+        MenuItem menuItem = menuItemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Menu item not found"));
+        return RestaurantMapper.toMenuItemDTO(menuItem);
+    }
 }

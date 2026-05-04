@@ -34,3 +34,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tI
 ###
 GET http://localhost:8080/api/orders?customerId=1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI1MTI4LCJleHAiOjE3Nzc5Mjg3Mjh9.t0MPXBCUzQY8nVK1HrveEC8rSnGJXEWwFyHay9pUbRw
+###
+POST http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2hubWlsbGVyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTMwNTc2LCJleHAiOjE3Nzc5MzQxNzZ9.-mGnF-k64mWdCg4IFWptMT8WDupKJgbamH7tUV5YE9c
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "items": [
+    {
+      "menuItemId": 3,
+      "quantity": 4
+    }
+  ]
+}
+###
+GET http://localhost:8081/restaurants/menu-items/2
