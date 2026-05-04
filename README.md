@@ -9,12 +9,12 @@ Implemented so far:
 - API Gateway
 - Restaurant Service
 - User Management Service
+- Order Service
 - JWT authentication
 - Password hashing with BCrypt
 - MySQL database integration
 
 ## Planned:
-- Order Service
 - Payment Service
 - Reporting Service
 - React frontend
@@ -34,9 +34,10 @@ Implemented so far:
   
 ## Architecture
 Current backend services:
-- `discovery-server`
-- `api-gateway`
-- `restaurant-service`
-- `user-management-service`
+- discovery-server
+- api-gateway
+- restaurant-service
+- user-management-service
+- order-service
 ## Author
 Tijana Vujinovic
