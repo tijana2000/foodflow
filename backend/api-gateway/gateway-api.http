@@ -12,3 +12,19 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/api/restaurants
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI0Mzc3LCJleHAiOjE3Nzc5Mjc5Nzd9._v9YSTA1u6jGtBmL0acbBwGDbCiu2DlwowGPHHHibpg
+###
+POST http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2hubWlsbGVyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTc3ODg4LCJleHAiOjE3Nzc5ODE0ODh9.-9XCSTWHRTSud-n1a5UbTfoU06Jzrqs-u4UenAWr1XQ
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "items": [
+    {
+      "menuItemId": 3,
+      "menuItemName": "Pizza Margerita",
+      "quantity": 2,
+      "price": 850
+    }
+  ]
+}
