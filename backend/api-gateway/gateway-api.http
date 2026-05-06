@@ -54,3 +54,12 @@ Content-Type: application/json
     }
   ]
 }
+###
+GET http://localhost:8080/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDk2Njk3LCJleHAiOjE3NzgxMDAyOTd9._arMzef9YzkYqM3Ll7bFF2Z80tT6bIr2OdQpmCldaQo
+###
+GET http://localhost:8080/api/orders/16
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDk2Njk3LCJleHAiOjE3NzgxMDAyOTd9._arMzef9YzkYqM3Ll7bFF2Z80tT6bIr2OdQpmCldaQo
+###
+GET http://localhost:8080/api/orders/customer/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDk2Njk3LCJleHAiOjE3NzgxMDAyOTd9._arMzef9YzkYqM3Ll7bFF2Z80tT6bIr2OdQpmCldaQo
