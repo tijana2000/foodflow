@@ -35,3 +35,9 @@ Content-Type: application/json
   "amount": 3490,
   "paymentMethod": "CARD"
 }
+###
+GET http://localhost:8084/payments
+###
+GET http://localhost:8084/payments/1
+###
+GET localhost:8084/payments/order/16

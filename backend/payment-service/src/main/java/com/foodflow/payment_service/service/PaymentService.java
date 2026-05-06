@@ -6,6 +6,7 @@ import com.foodflow.payment_service.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PaymentService {
@@ -25,4 +26,17 @@ public class PaymentService {
 
         return paymentRepository.save(payment);
     }
+
+    public List<Payment> getAllPayments(){
+        return paymentRepository.findAll();
+    }
+    public Payment getPaymentById(Long id){
+        return paymentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+    }
+    public List<Payment> getPaymentByOrderId(Long orderId){
+        return paymentRepository.findByOrderId(orderId);
+    }
+
+
 }

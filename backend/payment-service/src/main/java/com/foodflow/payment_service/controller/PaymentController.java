@@ -5,6 +5,8 @@ import com.foodflow.payment_service.model.Payment;
 import com.foodflow.payment_service.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/payments")
 public class PaymentController {
@@ -18,5 +20,18 @@ public class PaymentController {
             @RequestBody CreatePaymentRequest request){
 
         return paymentService.createPayment(request);
+    }
+    @GetMapping
+    public List<Payment> getAllPayments(){
+        return paymentService.getAllPayments();
+    }
+
+    @GetMapping("/{id}")
+    public Payment getPaymentById(@PathVariable Long id){
+        return paymentService.getPaymentById(id);
+    }
+    @GetMapping("/order/{orderId}")
+    public List<Payment> getPaymentsByOrderId(@PathVariable Long orderId){
+        return paymentService.getPaymentByOrderId(orderId);
     }
 }
