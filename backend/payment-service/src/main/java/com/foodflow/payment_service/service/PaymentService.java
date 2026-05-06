@@ -1,5 +1,6 @@
 package com.foodflow.payment_service.service;
 
+import com.foodflow.payment_service.dto.CreatePaymentRequest;
 import com.foodflow.payment_service.model.Payment;
 import com.foodflow.payment_service.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,11 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public Payment createPayment(Long orderId,Double amount){
+    public Payment createPayment(CreatePaymentRequest request){
         Payment payment = new Payment();
-        payment.setOrderId(orderId);
-        payment.setAmount(amount);
+        payment.setOrderId(request.getOrderId());
+        payment.setAmount(request.getAmount());
+        payment.setPaymentMethod(request.getPaymentMethod());
         payment.setStatus("SUCCESS");
         payment.setCreatedAt(LocalDateTime.now());
 

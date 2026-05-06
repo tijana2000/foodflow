@@ -5,6 +5,7 @@ import java.util.List;
 public class CreateOrderRequest {
     private Long restaurantId;
     private List<OrderItemRequest> items;
+    private String paymentMethod;
 
     public CreateOrderRequest(){
 
@@ -17,11 +18,19 @@ public class CreateOrderRequest {
         return items;
     }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
     }
 
     public void setItems(List<OrderItemRequest> items) {
         this.items = items;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }
