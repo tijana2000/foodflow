@@ -89,4 +89,11 @@ public class OrderService {
         return OrderMapper.toOrderDTO(order);
     }
 
+    public List<OrderDTO> getAllOrders(){
+        return orderRepository.findAll()
+                .stream()
+                .map(OrderMapper::toOrderDTO)
+                .toList();
+    }
+
 }

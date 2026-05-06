@@ -23,8 +23,8 @@ public class OrderController {
         return orderService.createOrder(customerId,request);
     }
 
-    @GetMapping
-    public List<OrderDTO> getOrdersByCustomer(@RequestParam Long customerId){
+    @GetMapping("/customer/{customerId}")
+    public List<OrderDTO> getOrdersByCustomer(@PathVariable Long customerId){
         return orderService.getOrdersByCustomer(customerId);
     }
 
@@ -32,6 +32,9 @@ public class OrderController {
     public OrderDTO getOrderById(@PathVariable Long id){
         return orderService.getOrderById(id);
     }
-
+    @GetMapping
+    public List<OrderDTO> getAllOrders(){
+        return orderService.getAllOrders();
+    }
 
 }
