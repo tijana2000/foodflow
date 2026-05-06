@@ -1,11 +1,9 @@
 package com.foodflow.payment_service.controller;
 
+import com.foodflow.payment_service.dto.CreatePaymentRequest;
 import com.foodflow.payment_service.model.Payment;
 import com.foodflow.payment_service.service.PaymentService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/payments")
@@ -17,8 +15,8 @@ public class PaymentController {
     }
     @PostMapping
     public Payment createPayment(
-            @RequestParam Long orderId,
-            @RequestParam Double amount){
-        return paymentService.createPayment(orderId,amount);
+            @RequestBody CreatePaymentRequest request){
+
+        return paymentService.createPayment(request);
     }
 }

@@ -4,6 +4,7 @@ import com.foodflow.order_service.client.MenuItemResponse;
 import com.foodflow.order_service.client.PaymentClient;
 import com.foodflow.order_service.client.RestaurantClient;
 import com.foodflow.order_service.dto.CreateOrderRequest;
+import com.foodflow.order_service.dto.CreatePaymentRequest;
 import com.foodflow.order_service.dto.OrderDTO;
 import com.foodflow.order_service.dto.OrderItemRequest;
 import com.foodflow.order_service.mapper.OrderMapper;
@@ -51,7 +52,11 @@ public class OrderService {
 
         order.setTotalPrice(totalPrice);
         Order savedOrder = orderRepository.save(order);
-        paymentClient.createPayment(savedOrder.getId(),savedOrder.getTotalPrice());
+        CreatePaymentRequest paymentRequest = new CreatePaymentRequest();
+        paymentRequest.setOrderId(savedOrder.getId());
+        paymentRequest.setAmount(savedOrder.getTotalPrice());
+        paymentRequest.setPaymentMethod(request.getPaymentMethod());
+        paymentClient.createPayment(paymentRequest);
         savedOrder.setStatus(OrderStatus.CONFIRMED);
         Order confirmedOrder = orderRepository.save(savedOrder);
         return OrderMapper.toOrderDTO(confirmedOrder);

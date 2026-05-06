@@ -1,1 +1,37 @@
 POST http://localhost:8084/payments?orderId=1&amount=1700
+###
+POST http://localhost:8084/payments
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "amount": 1700,
+  "paymentMethod": "CARD"
+}
+###
+POST http://localhost:8084/payments
+Content-Type: application/json
+
+{
+  "orderId": 2,
+  "amount": 2450,
+  "paymentMethod": "PAYPAL"
+}
+###
+POST http://localhost:8084/payments
+Content-Type: application/json
+
+{
+  "orderId":8,
+  "amount": 1230,
+  "paymentMethod": "CHEQUE"
+}
+###
+POST http://localhost:8084/payments
+Content-Type: application/json
+
+{
+  "orderId":29,
+  "amount": 3490,
+  "paymentMethod": "CARD"
+}

@@ -14,7 +14,7 @@ GET http://localhost:8080/api/restaurants
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc3OTI0Mzc3LCJleHAiOjE3Nzc5Mjc5Nzd9._v9YSTA1u6jGtBmL0acbBwGDbCiu2DlwowGPHHHibpg
 ###
 POST http://localhost:8080/api/orders?customerId=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDY0Mzg1LCJleHAiOjE3NzgwNjc5ODV9.jZ59fdTZOOq-59HYDHAHJVR6fy2mr8zRbv8Rw9rqZik
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDc2MzYzLCJleHAiOjE3NzgwNzk5NjN9.JTS_GmSrIWHGUTElVqHy4Ud-y8xVOZAFvuUs4GzdmqI
 Content-Type: application/json
 
 {
@@ -29,3 +29,28 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/api/payments?orderId=1&amount=1700
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDYyODY1LCJleHAiOjE3NzgwNjY0NjV9.16APaKfKzUMW8nWzP0c2BLA9CzWCE_c-XwBzwbbDHwY
+###
+POST http://localhost:8080/api/payments
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDc2MzYzLCJleHAiOjE3NzgwNzk5NjN9.JTS_GmSrIWHGUTElVqHy4Ud-y8xVOZAFvuUs4GzdmqI
+Content-Type: application/json
+
+{
+  "orderId" : 1,
+  "amount": 1290,
+  "paymentMethod": "PAYPAL"
+}
+###
+POST http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDc2ODE0LCJleHAiOjE3NzgwODA0MTR9.XQ1H2txj4ggHYY8LwSvfq2hJvM0rojxGXHJZ8K4iCM4
+Content-Type: application/json
+
+{
+  "restaurantId" : 1,
+  "paymentMethod" : "CHEQUE",
+  "items": [
+    {
+      "menuItemId": 3,
+      "quantity": 2
+    }
+  ]
+}
