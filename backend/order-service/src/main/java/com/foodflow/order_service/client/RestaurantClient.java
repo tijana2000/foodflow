@@ -1,15 +1,11 @@
 package com.foodflow.order_service.client;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@Service
-public class RestaurantClient {
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    public MenuItemResponse getMenuItemById(Long menuItemId){
-        return restTemplate.getForObject(
-                "http://localhost:8081/restaurants/menu-items/" + menuItemId, MenuItemResponse.class
-        );
-    }
+@FeignClient(name = "RESTAURANT-SERVICE")
+public interface RestaurantClient {
+    @GetMapping("/restaurants/menu-items/{menuItemId}")
+    MenuItemResponse getMenuItemById(@PathVariable Long menuItemId);
 }
