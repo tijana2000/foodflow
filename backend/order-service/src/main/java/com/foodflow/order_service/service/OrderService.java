@@ -1,6 +1,7 @@
 package com.foodflow.order_service.service;
 
 import com.foodflow.order_service.client.MenuItemResponse;
+import com.foodflow.order_service.client.PaymentClient;
 import com.foodflow.order_service.client.RestaurantClient;
 import com.foodflow.order_service.dto.CreateOrderRequest;
 import com.foodflow.order_service.dto.OrderDTO;
@@ -12,18 +13,22 @@ import com.foodflow.order_service.model.OrderStatus;
 import com.foodflow.order_service.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final PaymentClient paymentClient;
     private final RestaurantClient restaurantClient;
 
-    public OrderService(OrderRepository orderRepository, RestaurantClient restaurantClient) {
+    public OrderService(OrderRepository orderRepository, RestaurantClient restaurantClient, PaymentClient paymentClient) {
         this.orderRepository = orderRepository;
         this.restaurantClient = restaurantClient;
+        this.paymentClient = paymentClient;
     }
 
     public OrderDTO createOrder(Long customerId, CreateOrderRequest request) {
@@ -36,8 +41,9 @@ public class OrderService {
         List<OrderItem> items = request.getItems()
                 .stream()
                 .map(itemRequest -> mapToOrderItem(itemRequest, order))
-                .toList();
+                .collect(Collectors.toCollection(ArrayList::new));
         order.setItems(items);
+
 
         double totalPrice = items.stream()
                 .mapToDouble(item -> item.getPrice() * item.getQuantity())
@@ -45,7 +51,10 @@ public class OrderService {
 
         order.setTotalPrice(totalPrice);
         Order savedOrder = orderRepository.save(order);
-        return OrderMapper.toOrderDTO(savedOrder);
+        paymentClient.createPayment(savedOrder.getId(),savedOrder.getTotalPrice());
+        savedOrder.setStatus(OrderStatus.CONFIRMED);
+        Order confirmedOrder = orderRepository.save(savedOrder);
+        return OrderMapper.toOrderDTO(confirmedOrder);
     }
 
     private OrderItem mapToOrderItem(OrderItemRequest request, Order order) {

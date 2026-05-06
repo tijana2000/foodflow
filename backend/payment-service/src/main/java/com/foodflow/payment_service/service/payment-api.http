@@ -1,0 +1,1 @@
+POST http://localhost:8084/payments?orderId=1&amount=1700
