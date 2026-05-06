@@ -1,8 +1,17 @@
 package com.foodflow.order_service.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class OrderItemRequest {
+
+    @NotNull(message = "Menu item id is required")
     private Long menuItemId;
+
     private String menuItemName;
+
+    @NotNull(message = "Quantity is required")
+    @Positive(message = "Quantity must be greater then zero")
     private Integer quantity;
     private Double price;
 

@@ -1,7 +1,5 @@
 GET http://localhost:8080/api/restaurants
-
 ###
-
 POST http://localhost:8080/api/users/login
 Content-Type: application/json
 
@@ -63,3 +61,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tI
 ###
 GET http://localhost:8080/api/orders/customer/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDk2Njk3LCJleHAiOjE3NzgxMDAyOTd9._arMzef9YzkYqM3Ll7bFF2Z80tT6bIr2OdQpmCldaQo
+###
+GET http://localhost:8080/api/orders/99999
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MDk5MjEzLCJleHAiOjE3NzgxMDI4MTN9.NE-Lk-0fV02xqpX4kfFFC73Qpvy2hybMU84nxxu2CE4
+###
+POST http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXNoZWR1c2VyQHRlc3QuY29tIiwiaWF0IjoxNzc4MTAyMzI5LCJleHAiOjE3NzgxMDU5Mjl9.SJ5dXaHYwKaM__tj3IkIGohG8UjxGPll6LLe_QaCozc
+Content-Type: application/json
+
+{
+  "restaurantId": 1,
+  "paymentMethod": "CARD",
+  "items": [
+    {
+      "menuItemId": 2,
+      "quantity": 0
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import com.foodflow.order_service.dto.CreateOrderRequest;
 import com.foodflow.order_service.dto.CreatePaymentRequest;
 import com.foodflow.order_service.dto.OrderDTO;
 import com.foodflow.order_service.dto.OrderItemRequest;
+import com.foodflow.order_service.exception.OrderNotFoundException;
 import com.foodflow.order_service.mapper.OrderMapper;
 import com.foodflow.order_service.model.Order;
 import com.foodflow.order_service.model.OrderItem;
@@ -85,7 +86,7 @@ public class OrderService {
 
     public OrderDTO getOrderById(Long id){
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new OrderNotFoundException(id));
         return OrderMapper.toOrderDTO(order);
     }
 
